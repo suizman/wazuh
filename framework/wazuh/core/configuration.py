@@ -93,10 +93,6 @@ CONF_SECTIONS = MappingProxyType({
         'type': 'last',
         'list_options': ['nodes']
     },
-    'vulnerability-detector': {
-        'type': 'merge',
-        'list_options': ['feed', 'provider']
-    },
     'osquery': {
         'type': 'merge',
         'list_options': ['pack']
