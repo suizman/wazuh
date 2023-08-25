@@ -364,7 +364,7 @@ default_policies:
           - '*:*:*'
         effect: allow
 
-  events_ingest:
+  event_ingest:
     description: Allow ingesting events.
     policies:
       resourceless:
