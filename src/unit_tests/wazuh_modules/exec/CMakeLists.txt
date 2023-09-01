@@ -1,4 +1,4 @@
-# Copyright (C) 2015, Wazuh Inc.
+# Copyright (C) 2023, Wazuh Inc.
 #
 # This program is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
@@ -9,7 +9,8 @@
 include(${SRC_FOLDER}/unit_tests/wrappers/wazuh/shared/shared.cmake)
 
 list(APPEND wmexec_tests_names "test_wm_exec")
-list(APPEND wmexec_tests_flags "-Wl,--wrap,OSList_AddData -Wl,--wrap,merror -Wl,--wrap,OSList_DeleteThisNode ${DEBUG_OP_WRAPPERS}")
+list(APPEND wmexec_tests_flags "-Wl,--wrap,OSList_AddData -Wl,--wrap,merror -Wl,--wrap,OSList_DeleteThisNode \
+                                -Wl,--wrap,OSList_GetFirstNode ${DEBUG_OP_WRAPPERS}")
 
 # Add extra compiling flags
 add_compile_options(-Wall)
