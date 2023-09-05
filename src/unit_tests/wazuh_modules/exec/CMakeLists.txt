@@ -9,8 +9,11 @@
 include(${SRC_FOLDER}/unit_tests/wrappers/wazuh/shared/shared.cmake)
 
 list(APPEND wmexec_tests_names "test_wm_exec")
-list(APPEND wmexec_tests_flags "-Wl,--wrap,OSList_AddData -Wl,--wrap,merror -Wl,--wrap,OSList_DeleteThisNode \
-                                -Wl,--wrap,OSList_GetFirstNode ${DEBUG_OP_WRAPPERS}")
+list(APPEND wmexec_tests_flags "-Wl,--wrap,OSList_AddData -Wl,--wrap,merror \
+                                -Wl,--wrap,OSList_DeleteThisNode -Wl,--wrap,OSList_GetFirstNode \
+                                -Wl,--wrap,fork -Wl,--wrap,kill -Wl,--wrap,exit \
+                                -Wl,--wrap,OSList_Destroy -Wl,--wrap,mdebug1 \
+                                -Wl,--wrap,sleep ${DEBUG_OP_WRAPPERS}")
 
 # Add extra compiling flags
 add_compile_options(-Wall)
