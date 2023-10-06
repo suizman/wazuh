@@ -33,7 +33,7 @@ typedef struct ThreadInfo {
 
 static OSList * wm_children_list = NULL;    // Child process list
 
-// 
+// Clean node data
 static void wm_children_node_clean(pid_t *p_sid) {
     os_free(p_sid);
 }
@@ -54,8 +54,6 @@ void wm_children_pool_destroy() {
 }
 
 #ifdef WIN32
-
-#define ERROR_PROC_NOT_FOUND 127
 
 // Windows version -------------------------------------------------------------
 
@@ -274,6 +272,7 @@ void wm_kill_children() {
         }
     }
     w_mutex_unlock(&wm_children_mutex);
+    wm_children_pool_destroy();
 }
 
 #else

@@ -19,6 +19,7 @@
 #define SetThreadPriority   wrap_SetThreadPriority
 #define GetCurrentThread    wrap_GetCurrentThread
 #define CreateThread        wrap_CreateThread
+#define TerminateProcess    wrap_TerminateProcess
 
 WINBOOL wrap_SetThreadPriority(HANDLE hThread, int nPriority);
 
@@ -36,6 +37,9 @@ HANDLE wrap_CreateThread(LPSECURITY_ATTRIBUTES lpThreadAttributes,
 BOOL wrap_OpenProcessToken(HANDLE ProcessHandle,
                            DWORD DesiredAccess,
                            PHANDLE TokenHandle);
+
+BOOL wrap_TerminateProcess(__UNUSED_PARAM(HANDLE hProcess), 
+                           __UNUSED_PARAM(UINT uExitCode));
 
 /**
  * @brief This function loads the expect and will_return calls for the wrapper of SetThreadPriority
