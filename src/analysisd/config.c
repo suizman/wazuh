@@ -55,6 +55,7 @@ int GlobalConf(const char *cfgfile)
     Config.syscheck_ignore_frequency = 10;
     Config.syscheck_ignore_time = 3600;
     Config.ar = 0;
+    Config.update_check = 1;
 
     Config.syscheck_ignore = NULL;
     Config.white_list = NULL;
@@ -142,6 +143,7 @@ cJSON *getGlobalConfig(void) {
     if (Config.alerts_log) cJSON_AddStringToObject(global, "alerts_log", "yes"); else cJSON_AddStringToObject(global, "alerts_log", "no");
     cJSON_AddNumberToObject(global, "stats", Config.stats);
     cJSON_AddNumberToObject(global, "memory_size", Config.memorysize);
+    if (Config.update_check) cJSON_AddStringToObject(global, "update_check", "yes"); else cJSON_AddStringToObject(global, "update_check", "no");
     if (Config.white_list) {
         cJSON *ip_list = cJSON_CreateArray();
         for (i=0;Config.white_list[i] && Config.white_list[i]->ip;i++) {
